@@ -9,7 +9,7 @@ account1.Deposit(2000);
 account2.Deposit(6000);
 account1.PrintAccountSummary();
 account2.PrintAccountSummary();
-(bool isTransferSuccess, string error) = Account.TransferAmount(account2, account1, 2000);
+(bool isTransferSuccess, string error) = account2.TransferAmount(account1, 2000);
 
 if (!isTransferSuccess && string.IsNullOrWhiteSpace(error))
 {

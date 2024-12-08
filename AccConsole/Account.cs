@@ -31,19 +31,19 @@ public class Account
         Console.WriteLine($"The account with id {Id} has a balance of: {Balance}");
     }
 
-    public static (bool isScuccess, string error) TransferAmount(Account fromAccount, Account toAccount, decimal amount)
+    public (bool isScuccess, string error) TransferAmount(Account toAccount, decimal amount)
     {
         if (amount <= 0)
         {
             return (false, "Transfer failed: Amount must be greater than zero.");
         }
-        else if (fromAccount.Balance < amount)
+        else if (this.Balance < amount)
         {
-            return (false, $"Transfer failed: Insufficient balance in the source account {fromAccount.Id} for the requested transfer amount {amount}.");
+            return (false, $"Transfer failed: Insufficient balance in the source account {this.Id} for the requested transfer amount {amount}.");
         }
 
+        this.Balance -= amount;
         toAccount.Balance += amount;
-        fromAccount.Balance -= amount;
         return (true, string.Empty);
     }
 }
